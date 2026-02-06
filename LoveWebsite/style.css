@@ -1,0 +1,229 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --text-color: #5d4037;
+    --accent-color: #d81b60;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents scrolling during animation */
+    font-family: 'Playfair Display', serif;
+    background: var(--bg-gradient);
+}
+
+#animationCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none; /* Allows clicking through the canvas */
+}
+
+.main-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    animation: fadeIn 2s ease-in;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.flower-divider {
+    font-size: 1.5rem;
+    color: white;
+    margin: 20px 0;
+}
+
+#loveButton {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 20px;
+}
+
+#loveButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(216, 27, 96, 0.4);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.ka-text {
+    font-family: 'Noto Serif Georgian', serif;
+    line-height: 1.6;
+    letter-spacing: 0px; /* Georgian looks better without extra spacing */
+}
+
+/* For a more handwritten/romantic look for the note */
+.love-note p {
+    font-family: 'Noto Serif Georgian', serif; /* Or 'Great Vibes' if you mix English */
+    font-size: 1.5rem;
+    font-style: italic;
+}
+/* --- RESPONSIVE LOGIC --- */
+
+/* Ensures the container doesn't overflow on small screens */
+.main-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Makes the glass card adjust its width based on the device */
+.glass-card {
+    width: 95%;           /* Use almost full width on mobile */
+    max-width: 600px;     /* Don't let it get too wide on laptops */
+    margin: 0 auto;
+    padding: 30px 20px;   /* Adjusted padding for better spacing */
+    box-sizing: border-box; /* Prevents padding from breaking the width */
+}
+
+/* Responsive Text */
+h1 {
+    font-size: clamp(1.8rem, 8vw, 3rem); /* Shrinks on mobile, grows on laptop */
+    word-wrap: break-word;
+}
+
+p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    line-height: 1.6;
+}
+
+/* Responsive Button */
+#loveButton {
+    width: 100%;          /* Full width on small phones for easier clicking */
+    max-width: 250px;     /* Prevents it from being too big on laptops */
+    padding: 15px 20px;
+}
+
+/* Adjustments for very small phones */
+@media (max-width: 400px) {
+    .glass-card {
+        padding: 20px 10px;
+    }
+}
+
+/* 1. Center everything in the body */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    overflow-x: hidden;      /* Prevents horizontal scrolling */
+}
+
+/* 2. Fix the Card Container */
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. The Card Styling */
+.glass-card {
+    width: 90%;            /* Uses 90% of the screen width on mobile */
+    max-width: 500px;      /* Stops it from getting too big on laptops */
+    margin: 0 auto;        /* Force centering */
+    padding: 40px 20px;
+    box-sizing: border-box; /* Crucial: keeps padding inside the width */
+    text-align: center;
+}
+
+/* 4. Make sure the Canvas stays in the background */
+#animationCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;           /* Keeps it behind the card */
+}
+
+
+/* 1. Make sure canvas is in the background and doesn't block clicks */
+#animationCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Low z-index */
+    pointer-events: none; /* Allows clicks to pass through to the button */
+}
+
+/* 2. Make sure the card is in the foreground */
+.main-container {
+    position: relative;
+    z-index: 10; /* High z-index to stay on top of canvas */
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Replace or update this section in your style.css */
+
+h1 {
+    /* Decreased the maximum size from 3rem or 3.8rem to 2.5rem */
+    font-size: clamp(1.5rem, 6vw, 2.5rem); 
+    color: #c9184a;
+    margin: 0;
+}
+
+p {
+    /* Decreased the font size for paragraph text */
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    line-height: 1.6;
+}
+
+/* Also decrease the font size in the love note section from image_853ebf.png */
+.love-note p {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    line-height: 1.8;
+}
